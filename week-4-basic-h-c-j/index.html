@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let timeout;
+        // function depopulateDiv(){
+        //     clearTimeout(timeout)
+        //     const timeout = setTimeout(function(){
+        //         myFunction()
+        //     },100)
+        // }
+        function myFunction() {
+            const a = document.getElementById("firstNumber").value;
+            const b = document.getElementById("secondNumber").value;
+            fetch("http://localhost:3000/sum?a="+a +"&b="+b)
+            .then(function(res){
+                console.log(res);
+                res.text()
+                .then(function(ans){
+                    document.getElementById("finalSum").innerHTML= ans;
+                })
+            })
+            // const element = document.getElementById("finalSum");
+            // element.innerHTML=parseInt(a)+parseInt(b);
+        }
+    </script>
+</head>
+<body>
+    <input oninput="myFunction()" type="text" id="firstNumber" placeholder="First Number"></input><br></br>
+    <input oninput="myFunction()" type="text" id="secondNumber"placeholder="Second Number"></input><br></br>
+    <div id="finalSum"></div>
+</body>
+</html>
